@@ -3,21 +3,6 @@
 @section('title', 'Beranda')
 
 @section('content')
-<!-- Hero Section with Building Background -->
-<section class="hero-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="hero-content">
-                    <div class="hero-box">
-                        <h2>INGIN KULIAH DAN BERKARIR<br>DI LUAR NEGERI ?</h2>
-                        <button class="btn btn-selengkapnya">SELENGKAPNYA ▼</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Tentang Kami Section -->
 <section class="py-5">

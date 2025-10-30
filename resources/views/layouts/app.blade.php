@@ -31,18 +31,68 @@
             padding: 10px 0;
         }
 
+        /* layout helpers to create left/center/right zones */
+        /* use an inner wrapper so we don't override Bootstrap's .container globally */
+        .navbar-custom .navbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* separate left and right zones */
+            gap: 0.5rem;
+            width: 100%;
+            padding-left: 12px; /* smaller inset so items are closer to edge */
+            padding-right: 12px; /* smaller inset */
+        }
+
+        .navbar-custom .collapse.navbar-collapse {
+            display: flex;
+            align-items: center;
+            flex: 1 1 auto;
+            gap: 1rem;
+            justify-content: space-between;
+        }
+
+        /* center area (nav list) — fills available space and centers nav items between brand and right controls */
+        .nav-center {
+            flex: 1 1 auto; /* take remaining space */
+            display: flex;
+            justify-content: center; /* center the nav items */
+            min-width: 0;
+            margin-left: 18px; /* tambahkan gap antara brand dan opsi navbar */
+            gap: 5px;
+        }
+
+        /* ensure the brand and right controls keep their intrinsic sizes */
         .navbar-custom .navbar-brand {
-            font-size: 1.75rem;
+            font-size: 1.25rem; /* increased to match sample */
             font-weight: 700;
             color: white !important;
-            letter-spacing: 2px;
-            margin-right: 1.25rem;
+            letter-spacing: 0.8px;
+            margin-right: 18px; /* lebih besar gap ke opsi navbar */
+            display: flex;
+            align-items: center;
+            gap: 8px; /* bring logo and title closer */
             white-space: nowrap;
+            flex: 0 0 auto; /* keep brand at intrinsic size */
+        }
+
+        /* ensure brand logo scales nicely */
+        .navbar-custom .navbar-brand img {
+            height: 44px; /* larger logo but proportional to header */
+            width: auto;
+            display: block;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 36px; /* increase gap between search and button */
+            justify-content: flex-end;
+            flex: 0 0 auto; /* keep right controls from growing */
         }
 
         .navbar-custom .navbar-nav {
             align-items: center;
-            gap: 1.2rem; /* adjust gap between nav items */
+            gap: 0.8rem; /* tighten gap between nav items so they appear closer */
             flex-wrap: nowrap;
             white-space: nowrap;
         }
@@ -85,55 +135,84 @@
         .navbar-custom .search-wrapper {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: transparent;
-            padding: 6px 10px;
-            border-radius: 999px;
+            padding: 4px 8px; /* smaller padding for a flatter box */
+            border-radius: 4px; /* subtle rectangle corners */
             border-bottom: 2px solid rgba(255,255,255,0.22);
-            width: 260px;
+            width: 260px; /* narrower so it doesn't push items apart */
             transition: border-color 0.15s, background-color 0.15s;
             min-height: 36px;
+            flex: 0 0 auto; /* keep search at intrinsic width */
+            margin-right: 18px; /* gap antara searchbar dan tombol daftar */
         }
 
-       .navbar-custom .search-wrapper .input-group-text {
-           background: transparent;
-           border: none;
-           padding: 0;
-           margin: 0;
-           color: rgba(255,255,255,0.95);
-           display: flex;
-           align-items: center;
+        /* make the left icon look like it's inside the box, keep it flat */
+        .navbar-custom .search-wrapper .input-group-text {
+            background: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+            color: rgba(255,255,255,0.95);
+            display: flex;
+            align-items: center;
         }
 
-       .navbar-custom .search-wrapper .bi-search {
+        .navbar-custom .search-wrapper .bi-search {
             font-size: 1.05rem;
         }
 
+        /* input should be visually flat (no inner borders) */
+        .navbar-custom .search-wrapper .form-control {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            color: rgba(255,255,255,0.95);
+        }
+
+        .navbar-custom .search-wrapper .form-control:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* stronger underline on focus */
+        .navbar-custom .search-wrapper:focus-within {
+            border-bottom-color: rgba(255,255,255,0.95);
+        }
+
         .navbar-custom .btn-daftar {
-             background-color: rgba(255,255,255,0.12);
-             color: white;
-             padding: 8px 22px;
-             border-radius: 999px;
-             border: 1px solid rgba(255,255,255,0.08);
-             font-weight: 700;
-             transition: transform 0.18s, background-color 0.18s;
-             text-transform: uppercase;
-             font-size: 0.86rem;
-             letter-spacing: 0.6px;
-             white-space: nowrap;
+            /* Blue pill with subtle inner dark gradient to mimic provided design */
+            background: linear-gradient(180deg, #3b7bb3 0%, #265f94 100%);
+            color: #ffffff;
+            padding: 8px 20px;
+            border-radius: 999px;
+            border: 1.5px solid rgba(255,255,255,0.85); /* brighter border like sample */
+            font-weight: 700;
+            transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+            text-transform: uppercase;
+            font-size: 0.86rem;
+            letter-spacing: 0.6px;
+            white-space: nowrap;
+            box-shadow: inset 0 -8px 14px rgba(0,0,0,0.22), 0 6px 18px rgba(0,0,0,0.12);
         }
 
         .navbar-custom .btn-daftar:hover {
-            background-color: #ffffff;
-            color: #4a1a5c;
             transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+            box-shadow: inset 0 -6px 12px rgba(0,0,0,0.28), 0 12px 30px rgba(0,0,0,0.18);
+            /* small brighten on hover */
+            background: linear-gradient(180deg, #4a89c8 0%, #2e6faa 100%);
         }
 
-        @media (max-width: 992px) {
+        @media (max-width: 1200px) {
             .navbar-custom .navbar-nav {
                 gap: 0.9rem;
                 flex-wrap: wrap; /* allow wrapping on smaller screens */
+            }
+            .navbar-custom .search-wrapper {
+                width: 100%;
+                max-width: 250px;
+                margin-right: 0;
             }
             .navbar-custom .flex-grow-1 {
                 display: none; /* hide spacer so items stack naturally */
@@ -146,6 +225,9 @@
                 padding: 8px 18px;
                 width: 100%;
             }
+            .nav-right {
+                gap: 12px; /* reduce gap on medium/smaller screens to avoid overflow */
+            }
         }
 
         .search-box::placeholder {
@@ -157,69 +239,92 @@
         /* Hero Section */
         .hero-section {
             position: relative;
-            min-height: 1000px;
+            min-height: 1000px; 
+            max-width: 100%;/* reduced to match screenshot height */
             display: flex;
-            align-items: flex-end;
-            padding-bottom: 50px;
+            align-items: center; /* vertically center the hero box */
+            padding: 40px 0; /* spacing above/below the box */
             background-size: cover;
             background-position: center;
             background-image: url('{{ asset("images/hero/hero-background.jpg") }}');
+            background-repeat: no-repeat
         }
 
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(74, 26, 92, 0.25) 0%, rgba(46, 90, 143, 0.2) 100%);
-        }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 600px;
+            max-width: 900px; /* make overall hero content narrower */
+            width: 100%;
+            margin: 0 auto; /* center the hero-content inside container */
         }
 
-        .hero-box {
-            background: linear-gradient(135deg, rgba(74, 26, 92, 0.92) 0%, rgba(46, 90, 143, 0.92) 100%);
-            padding: 35px 40px;
-            border-radius: 10px;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
+        /* hero box wrapper */
         .hero-box-content {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 30px;
+            justify-content: space-between; /* text left, button right like the image */
+            gap: 22px; /* small gap between text and button area */
+            /* tune padding so heading sits closer to left edge and button near right */
+            padding: 28px 44px;
+            /* semi-transparent gradient box matching navbar hues */
+            background: linear-gradient(90deg, rgba(74,26,92,0.92) 0%, rgba(46,90,143,0.78) 50%, rgba(91,141,184,0.65) 100%);
+            color: #fff;
+            width: 100%;
+            max-width: 980px; /* slightly wider to better match screenshot proportions */
+            margin: 0 auto; /* center the box inside hero-content */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            backdrop-filter: none; /* avoid blurring background image by default */
+        }
+
+        /* thin vertical white bar at the left of the heading */
+        .hero-decor {
+            width: 3px;
+            height: 96px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 3px;
+            margin-right: 18px;
+            flex: 0 0 auto;
         }
 
         .hero-box-content h2 {
             margin: 0;
-            flex: 1;
-            font-size: 1.4rem;
-            font-weight: 600;
-            line-height: 1.5;
+            flex: 0 1 auto;
+            font-size: 2.2rem; /* slightly larger to match image */
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: 0.8px;
+            text-transform: uppercase; /* match the all-caps look in image */
+            text-align: left; /* align left as in reference */
+            max-width: 560px; /* keep line length reasonable */
         }
 
         .hero-box-content .btn-selengkapnya {
             flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
             background-color: transparent;
-            border: 2px solid white;
+            border: 2px solid rgba(255,255,255,0.95);
             color: white;
-            padding: 10px 30px;
-            border-radius: 25px;
+            padding: 14px 38px;
+            border-radius: 999px;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all 0.28s;
             white-space: nowrap;
         }
 
         .hero-box-content .btn-selengkapnya:hover {
-            background-color: white;
+            background-color: rgba(255,255,255,0.95);
             color: #4a1a5c;
+            transform: translateY(-3px);
+        }
+
+        /* small tweak for the chevron icon inside the hero button */
+        .btn-selengkapnya .bi {
+            font-size: 1.05rem;
+            opacity: 0.95;
         }
 
         /* Footer */
@@ -561,11 +666,6 @@
                 margin: 10px 0;
                 border-bottom: none;
             }
-
-            .search-box {
-                width: 100%;
-                margin: 15px 0;
-            }
         }
     </style>
 
@@ -575,37 +675,64 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">Inaklug</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('tentang-kami') ? 'active' : '' }}" href="{{ route('tentang') }}">Tentang Kami</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('layanan-kami') ? 'active' : '' }}" href="{{ route('layanan') }}">Layanan Kami</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('artikel') ? 'active' : '' }}" href="{{ route('artikel') }}">Artikel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('hubungi-kami') ? 'active' : '' }}" href="{{ route('hubungi') }}">Hubungi Kami</a>
-                    </li>
-                    <li class="nav-item ms-3">
-                        <input type="text" class="form-control search-box" placeholder="Ketik pencarian">
-                    </li>
-                    <li class="nav-item ms-2">
-                        <button class="btn btn-daftar">DAFTAR ON-LINE</button>
-                    </li>
-                </ul>
+            <div class="navbar-inner">
+                <!-- Left zone: Brand + Toggler + Nav options (collapsible) -->
+                <div class="d-flex align-items-center nav-left">
+                    <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
+                        <img src="{{ asset('images/navbar/logo_klug.png') }}" alt="Inaklug logo" class="me-2" loading="lazy">
+                        <span>Inaklug</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <div class="nav-center">
+                            <ul class="navbar-nav align-items-center">
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::is('tentang-kami') ? 'active' : '' }}" href="{{ route('tentang') }}">Tentang Kami</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::is('layanan-kami') ? 'active' : '' }}" href="{{ route('layanan') }}">Layanan Kami</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::is('artikel') ? 'active' : '' }}" href="{{ route('artikel') }}">Artikel</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::is('hubungi-kami') ? 'active' : '' }}" href="{{ route('hubungi') }}">Hubungi Kami</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right zone: Search + Daftar On-line -->
+                <div class="nav-right d-flex align-items-center">
+                    <div class="search-wrapper">
+                        <span class="input-group-text"><i class="bi bi-search" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control border-0 bg-transparent search-box" placeholder="Ketik pencarian" aria-label="Ketik pencarian">
+                    </div>
+                    <button class="btn btn-daftar">DAFTAR ON-LINE</button>
+                </div>
             </div>
         </div>
     </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-content">
+            <div class="hero-box-content">
+                <div class="d-flex align-items-start">
+                    <div class="hero-decor" aria-hidden="true"></div>
+                    <h2>INGIN KULIAH DAN BERKARIR<br>DI LUAR NEGERI ?</h2>
+                </div>
+                <button class="btn btn-selengkapnya">SELENGKAPNYA <i class="bi bi-chevron-down"></i></button>
+            </div>
+        </div>
+    </section>
 
     <!-- Content -->
     @yield('content')
