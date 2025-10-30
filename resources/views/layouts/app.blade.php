@@ -37,7 +37,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between; /* separate left and right zones */
-            gap: 0.5rem;
+            gap: 8px;
             width: 100%;
             padding-left: 12px; /* smaller inset so items are closer to edge */
             padding-right: 12px; /* smaller inset */
@@ -47,7 +47,7 @@
             display: flex;
             align-items: center;
             flex: 1 1 auto;
-            gap: 1rem;
+            gap: 16px;
             justify-content: space-between;
         }
 
@@ -63,7 +63,7 @@
 
         /* ensure the brand and right controls keep their intrinsic sizes */
         .navbar-custom .navbar-brand {
-            font-size: 1.25rem; /* increased to match sample */
+            font-size: 20px; /* increased to match sample */
             font-weight: 700;
             color: white !important;
             letter-spacing: 0.8px;
@@ -92,7 +92,7 @@
 
         .navbar-custom .navbar-nav {
             align-items: center;
-            gap: 0.8rem; /* tighten gap between nav items so they appear closer */
+            gap: 13px; /* tighten gap between nav items so they appear closer */
             flex-wrap: nowrap;
             white-space: nowrap;
         }
@@ -106,12 +106,12 @@
         .navbar-custom .nav-link {
             color: rgba(255, 255, 255, 0.95) !important;
             margin: 0; /* remove extra margins, rely on gap */
-            padding: 0.45rem 0.25rem !important;
+            padding: 7px 4px !important;
             font-weight: 500;
             transition: all 0.22s;
             position: relative;
             border-bottom: 3px solid transparent;
-            font-size: 1rem;
+            font-size: 16px;
             white-space: nowrap;
         }
 
@@ -159,7 +159,7 @@
         }
 
         .navbar-custom .search-wrapper .bi-search {
-            font-size: 1.05rem;
+            font-size: 17px;
         }
 
         /* input should be visually flat (no inner borders) */
@@ -191,7 +191,7 @@
             font-weight: 700;
             transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
             text-transform: uppercase;
-            font-size: 0.86rem;
+            font-size: 14px;
             letter-spacing: 0.6px;
             white-space: nowrap;
             box-shadow: inset 0 -8px 14px rgba(0,0,0,0.22), 0 6px 18px rgba(0,0,0,0.12);
@@ -206,7 +206,7 @@
 
         @media (max-width: 1200px) {
             .navbar-custom .navbar-nav {
-                gap: 0.9rem;
+                gap: 14px;
                 flex-wrap: wrap; /* allow wrapping on smaller screens */
             }
             .navbar-custom .search-wrapper {
@@ -230,11 +230,11 @@
             }
         }
 
-        .search-box::placeholder {
-           color: rgba(255, 255, 255, 0.6);
-           font-size: 0.95rem;
+          .search-box::placeholder {
+              color: rgba(255, 255, 255, 0.6);
+              font-size: 15px;
 
-        }
+          }
 
         /* Hero Section */
         .hero-section {
@@ -250,37 +250,29 @@
             background-repeat: no-repeat
         }
 
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px; /* make overall hero content narrower */
-            width: 100%;
-            margin: 0 auto; /* center the hero-content inside container */
-        }
-
         /* hero box wrapper */
         .hero-box-content {
             display: flex;
             align-items: center;
             justify-content: space-between; /* text left, button right like the image */
-            gap: 22px; /* small gap between text and button area */
+            gap: 20px; /* small gap between text and button area */
             /* tune padding so heading sits closer to left edge and button near right */
             padding: 28px 44px;
             /* semi-transparent gradient box matching navbar hues */
             background: linear-gradient(90deg, rgba(74,26,92,0.92) 0%, rgba(46,90,143,0.78) 50%, rgba(91,141,184,0.65) 100%);
             color: #fff;
             width: 100%;
-            max-width: 980px; /* slightly wider to better match screenshot proportions */
+            max-width: 900px; /* slightly wider to better match screenshot proportions */
             margin: 0 auto; /* center the box inside hero-content */
-            border-radius: 12px;
+            border-radius: 0px; /* ubah jadi kotak */
             box-shadow: 0 10px 30px rgba(0,0,0,0.25);
             backdrop-filter: none; /* avoid blurring background image by default */
+    
         }
 
         /* thin vertical white bar at the left of the heading */
         .hero-decor {
-            width: 3px;
+            width: 2px; /* pertipis garis dekoratif */
             height: 96px;
             background: rgba(255,255,255,0.9);
             border-radius: 3px;
@@ -291,13 +283,15 @@
         .hero-box-content h2 {
             margin: 0;
             flex: 0 1 auto;
-            font-size: 2.2rem; /* slightly larger to match image */
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: 0.8px;
-            text-transform: uppercase; /* match the all-caps look in image */
-            text-align: left; /* align left as in reference */
+            font-family: 'Poppins', sans-serif; /* gunakan font global agar konsisten */
+            font-size: 25px; /* lebih kecil dan proporsional */
+            font-weight: 600; /* tidak terlalu tebal */
+            line-height: 1.25; /* spasi baris yang sedikit lebih longgar */
+            letter-spacing: 0.2px; /* kurangi jarak huruf */
+            text-transform: none; /* gunakan casing natural agar tampil mirip desain */
+            text-align: left;
             max-width: 560px; /* keep line length reasonable */
+            color: #ffffff; /* pastikan kontras tetap baik di atas gradien */
         }
 
         .hero-box-content .btn-selengkapnya {
@@ -306,7 +300,7 @@
             align-items: center;
             gap: 20px;
             background-color: transparent;
-            border: 2px solid rgba(255,255,255,0.95);
+            border: 1px solid rgba(255,255,255,0.9); /* garis tombol dipertipis */
             color: white;
             padding: 14px 38px;
             border-radius: 999px;
@@ -323,7 +317,7 @@
 
         /* small tweak for the chevron icon inside the hero button */
         .btn-selengkapnya .bi {
-            font-size: 1.05rem;
+            font-size: 17px;
             opacity: 0.95;
         }
 
@@ -337,7 +331,7 @@
 
         /* Article Section */
         .section-title {
-            font-size: 1.5rem;
+            font-size: 24px;
             font-weight: 700;
             color: #333;
             text-align: center;
@@ -350,7 +344,7 @@
             margin: 0 auto;
             text-align: center;
             color: #555;
-            font-size: 1.5rem;  
+            font-size: 24px;  
             line-height: 1.8;
             margin-bottom: 60px;
         }
@@ -433,7 +427,7 @@
         }
 
         .service-card-title {
-            font-size: 1.05rem;
+            font-size: 17px;
             font-weight: 700;
             margin: 0;
             color: #fff;
@@ -506,7 +500,7 @@
         }
 
         .consultation-box h3 {
-            font-size: 1.5rem;
+            font-size: 24px;
             font-weight: 700;
             margin-bottom: 10px;
         }
@@ -558,7 +552,7 @@
         }
 
         .article-title {
-            font-size: 1rem;
+            font-size: 16px;
             font-weight: 600;
             color: #333;
             line-height: 1.5;
@@ -589,21 +583,21 @@
         }
 
         .contact-title {
-            font-size: 2rem;
+            font-size: 32px;
             font-weight: 700;
             color: #4a1a5c;
             margin-bottom: 10px;
         }
 
         .contact-subtitle {
-            font-size: 1.3rem;
+            font-size: 21px;
             font-weight: 600;
             color: #2e5a8f;
             margin-bottom: 30px;
         }
 
         .contact-info {
-            font-size: 1rem;
+            font-size: 16px;
             color: #555;
             line-height: 2;
         }
@@ -650,7 +644,7 @@
             }
             
             .hero-box-content h2 {
-                font-size: 1.2rem;
+                font-size: 19px;
             }
             
             .hero-box-content .btn-selengkapnya {
@@ -723,7 +717,6 @@
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="container hero-content">
             <div class="hero-box-content">
                 <div class="d-flex align-items-start">
                     <div class="hero-decor" aria-hidden="true"></div>
